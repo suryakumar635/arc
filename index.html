@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STACKLY ARCHITECH STUDIO — Premium Design Experience</title>
+
+  <!-- Google Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #0f172a;
+      --secondary: #1e293b;
+      --accent: #06b6d4;
+      --highlight: #8b5cf6;
+      --gold: #fbbf24;
+      --white: #ffffff;
+      --light: #e2e8f0;
+      --gray: #94a3b8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #eef2ff 0%, #f0fdfa 100%);
+      color: var(--primary);
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: relative;
+      background: linear-gradient(135deg, rgba(15,23,42,0.85), rgba(30,41,59,0.9)),
+        url('https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 180deg at 50% 50%, var(--accent), var(--highlight), var(--accent));
+      opacity: 0.2;
+      animation: rotateBg 12s linear infinite;
+    }
+
+    @keyframes rotateBg {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 8vw;
+      z-index: 2;
+      position: relative;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--white);
+    }
+
+    .logo img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      box-shadow: 0 0 15px var(--gold);
+      animation: pulseLogo 2.5s infinite alternate;
+    }
+
+    @keyframes pulseLogo {
+      from { transform: scale(1); box-shadow: 0 0 10px var(--accent); }
+      to { transform: scale(1.05); box-shadow: 0 0 25px var(--highlight); }
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .hamburger { display: none; color: var(--white); font-size: 2rem; cursor: pointer; }
+
+    .banner {
+      text-align: center;
+      padding: 130px 10vw 100px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .banner h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      animation: slideUp 1.2s ease-out;
+    }
+
+    .banner p {
+      font-size: 1.2rem;
+      color: #cbd5e1;
+      margin-bottom: 30px;
+      animation: fadeIn 2s ease-in;
+    }
+
+    .banner button {
+      background: linear-gradient(90deg, var(--accent), var(--highlight));
+      border: none;
+      padding: 12px 35px;
+      color: var(--white);
+      font-weight: 600;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(6,182,212,0.5);
+    }
+
+    .banner button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 25px rgba(139,92,246,0.9);
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* ===== SLIDER ===== */
+    .slider {
+      position: relative;
+      width: 90%;
+      max-width: 1100px;
+      height: 400px;
+      margin: 100px auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .slide {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      opacity: 0;
+      transition: opacity 1.8s ease-in-out;
+    }
+
+    .slide.active { opacity: 1; }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.1);
+      transition: transform 5s ease-in-out;
+    }
+
+    .slide.active img { transform: scale(1); }
+
+    /* ===== ABOUT ===== */
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      max-width: 1100px;
+      margin: 100px auto;
+      gap: 40px;
+      padding: 0 6vw;
+      animation: fadeIn 2s ease-in;
+    }
+
+    .about img {
+      flex: 1;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    }
+
+    .about-content {
+      flex: 1;
+      min-width: 300px;
+      animation: slideUp 1.2s ease-in-out;
+    }
+
+    .about-content h2 {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+
+    .about-content p {
+      color: var(--secondary);
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact {
+      background: linear-gradient(135deg, var(--highlight), var(--accent));
+      color: var(--white);
+      text-align: center;
+      padding: 80px 6vw;
+      border-radius: 20px;
+      margin: 100px auto;
+      max-width: 1000px;
+      box-shadow: 0 0 40px rgba(6,182,212,0.4);
+      animation: pulseContact 3s infinite alternate;
+    }
+
+    @keyframes pulseContact {
+      from { box-shadow: 0 0 25px rgba(139,92,246,0.4); }
+      to { box-shadow: 0 0 50px rgba(6,182,212,0.8); }
+    }
+
+    .contact h2 { font-size: 2rem; margin-bottom: 10px; }
+    .contact button {
+      margin-top: 20px;
+      padding: 12px 35px;
+      background: var(--white);
+      color: var(--highlight);
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .contact button:hover {
+      transform: scale(1.08);
+      background: var(--gold);
+      color: var(--primary);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--secondary);
+      color: var(--white);
+      text-align: center;
+      padding: 60px 20px;
+      margin-top: 100px;
+    }
+
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin: 15px 0;
+    }
+
+    .footer-social a {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--white);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s ease;
+      box-shadow: 0 0 12px rgba(6,182,212,0.5);
+      font-size: 1.2rem;
+    }
+
+    .footer-social a:hover {
+      transform: translateY(-5px) rotate(10deg);
+      background: var(--highlight);
+      box-shadow: 0 0 25px rgba(139,92,246,0.8);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: rgba(30,41,59,0.95);
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 70vw;
+        border-radius: 10px;
+        padding: 25px;
+      }
+
+      .nav-links.show { display: flex; }
+      .hamburger { display: block; }
+      .about { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <div class="logo"><img src="logo.png" alt="logo" /> STACKLY ARCHITECH STUDIO</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="why.html">Why Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="hamburger">&#9776;</div>
+    </nav>
+
+    <section class="banner">
+      <h1>Designing Dreams into Reality</h1>
+      <p>Where Innovation Meets Architecture & Aesthetics</p>
+      <button onclick="window.location.href='projects.html'">Explore Projects</button>
+    </section>
+  </header>
+
+  <section class="slider">
+    <div class="slide active"><img src="luxury.png" alt="slide1"></div>
+    <div class="slide"><img src="skyline.png" alt="slide2"></div>
+    <div class="slide"><img src="techhub.png" alt="slide3"></div>
+  </section>
+
+  <section class="about">
+    <img src="eco.png" alt="about">
+    <div class="about-content">
+      <h2>Building Landmarks of the Future</h2>
+      <p>At STACKLY ARCHITECH STUDIO, we blend artistry and innovation to craft architectural icons that define city skylines. Each creation tells a story — of sustainability, creativity, and perfection. Let’s shape tomorrow together.</p>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>Let’s Bring Your Vision to Life</h2>
+    <p>Collaborate with STACKLY’s creative minds and create something timeless.</p>
+    <button onclick="window.location.href='contact.html'">Contact Us</button>
+  </section>
+
+  <footer>
+    <h3>Follow Us</h3>
+    <div class="footer-social">
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-whatsapp"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <p>© 2025 STACKLY ARCHITECH STUDIO | Crafted with Excellence</p>
+  </footer>
+
+  <script>
+    // Hamburger Toggle
+    document.querySelector(".hamburger").addEventListener("click", () => {
+      document.querySelector(".nav-links").classList.toggle("show");
+    });
+
+    // Image Slider
+    let slides = document.querySelectorAll(".slide");
+    let index = 0;
+    setInterval(() => {
+      slides[index].classList.remove("active");
+      index = (index + 1) % slides.length;
+      slides[index].classList.add("active");
+    }, 4000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why Us | STACKLY ARCHITECH STUDIO</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #0a0f1f;
+      --accent: #00e0ff;
+      --secondary: #1c2541;
+      --highlight: #f72585;
+      --text-light: #e0e8f9;
+      --glass: rgba(255, 255, 255, 0.1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e3a8a, #1e293b);
+      color: var(--text-light);
+      overflow-x: hidden;
+    }
+
+    /* ==== NAVIGATION ==== */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 15, 31, 0.8);
+      backdrop-filter: blur(12px);
+      padding: 15px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    nav .logo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    nav .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-light);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--highlight);
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      color: var(--accent);
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        background: rgba(10, 15, 31, 0.95);
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+        display: none;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+
+    /* ==== HEADER ==== */
+    header {
+      text-align: center;
+      padding: 100px 20px 80px;
+      background: radial-gradient(circle at center, #00e0ff33, transparent 70%);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #00e0ff;
+      text-shadow: 0 0 15px #00e0ff88;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      color: #cbd5e1;
+      animation: fadeUp 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ==== WHY US SECTION ==== */
+    .why-us {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--glass);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 18px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 224, 255, 0.1);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(
+        from 0deg,
+        var(--accent),
+        var(--highlight),
+        transparent 180deg
+      );
+      animation: rotate 6s linear infinite;
+      opacity: 0.2;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 10px 30px rgba(247, 37, 133, 0.3);
+    }
+
+    .icon {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      color: var(--accent);
+      text-shadow: 0 0 10px #00e0ffaa;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    /* ==== SLIDER SECTION ==== */
+    .slider-section {
+      margin-top: 80px;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      overflow: hidden;
+      padding: 50px 0;
+    }
+
+    .slider-track {
+      display: flex;
+      width: calc(250px * 10);
+      animation: scroll 25s linear infinite;
+    }
+
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(calc(-250px * 5)); }
+    }
+
+    .slide {
+      width: 250px;
+      margin: 0 15px;
+      flex-shrink: 0;
+      text-align: center;
+    }
+
+    .slide img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+
+    .slide img:hover { transform: scale(1.05); }
+
+    /* ==== CTA ==== */
+    .cta {
+      text-align: center;
+      margin: 100px 0 60px;
+    }
+
+    .cta button {
+      background: linear-gradient(135deg, var(--highlight), var(--accent));
+      border: none;
+      padding: 15px 40px;
+      border-radius: 30px;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 0 20px var(--accent);
+      transition: transform 0.3s;
+    }
+
+    .cta button:hover { transform: scale(1.08); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--secondary);
+      color: var(--white);
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin: 15px 0;
+    }
+
+    .footer-social a {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--white);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      box-shadow: 0 0 10px rgba(0,188,212,0.3);
+    }
+
+    .footer-social a:hover {
+      background: var(--white);
+      color: var(--accent);
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(0,188,212,0.6);
+    }
+
+    footer p { color: var(--gray); font-size: 0.9rem; }
+
+
+    footer a:hover { color: var(--highlight); }
+  </style>
+</head>
+<body>
+
+  <!-- ==== NAVIGATION ==== -->
+  <nav>
+    <div class="logo"><img src="logo.png" alt="logo" /> STACKLY ARCHITECH STUDIO</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="why.html" class="active">Why Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger">&#9776;</div>
+  </nav>
+
+  <!-- ==== HEADER ==== -->
+  <header>
+    <h1>Why Choose STACKLY ARCHITECH STUDIO?</h1>
+    <p>We craft iconic spaces blending innovation, sustainability, and timeless design.</p>
+  </header>
+
+  <!-- ==== WHY US SECTION ==== -->
+  <section class="why-us">
+    <div class="card">
+      <div class="icon">🏆</div>
+      <h3>World-Class Expertise</h3>
+      <p>Our architects bring decades of creative excellence and technical mastery to every project.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🎯</div>
+      <h3>Client-Centric Approach</h3>
+      <p>We listen, adapt, and collaborate to ensure each design reflects your vision and lifestyle.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">🌍</div>
+      <h3>Sustainable Design</h3>
+      <p>Every blueprint we create focuses on environmental harmony and responsible innovation.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">⚙️</div>
+      <h3>Cutting-Edge Technology</h3>
+      <p>We integrate AI-driven modeling and 3D visualization for precision and realism.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon">💡</div>
+      <h3>Innovative Vision</h3>
+      <p>From futuristic facades to serene interiors, our ideas reshape modern architecture.</p>
+    </div>
+  </section>
+
+  <!-- ==== SLIDER ==== -->
+  <section class="slider-section">
+    <div class="slider-track">
+      <div class="slide"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" alt=""></div>
+      <div class="slide"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" alt=""></div>
+      <div class="slide"><img src="https://images.unsplash.com/photo-1582582429419-3c5baf07e5c9?auto=format&fit=crop&w=800&q=80" alt=""></div>
+      <div class="slide"><img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80" alt=""></div>
+      <div class="slide"><img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=800&q=80" alt=""></div>
+      <div class="slide"><img src="https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=800&q=80" alt=""></div>
+      <div class="slide"><img src="https://images.unsplash.com/photo-1600585154534-6fc1ebf8de7e?auto=format&fit=crop&w=800&q=80" alt=""></div>
+    </div>
+  </section>
+
+  <!-- ==== CTA ==== -->
+  <div class="cta">
+    <button onclick="window.location.href='404.html'">Let's Build Together 🚀</button>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <h3>Connect With Us</h3>
+    <div class="footer-social">
+      <a href="404.html" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="404.html" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="404.html" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <!-- <a href="404.html" target="_blank"><i class="fab fa-linkedin-in"></i></a> -->
+    </div>
+    <p>© 2025 STACKLY ARCHITECH STUDIO. All Rights Reserved.</p>
+  </footer>
+
+  <!-- ==== JS for hamburger menu ==== -->
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
